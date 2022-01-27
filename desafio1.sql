@@ -6,13 +6,13 @@ USE SpotifyClone;
 
 CREATE TABLE artistas(
     artista_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    artista_nome VARCHAR(100) NOT NULL,
+    artista_nome VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE planos(
     plano_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     plano_nome VARCHAR(100) NOT NULL,
-    plano_valor DOUBLE NOT NULL,
+    plano_valor DOUBLE NOT NULL
 );
 
 CREATE TABLE usuarios(
@@ -21,7 +21,7 @@ CREATE TABLE usuarios(
     usuario_idade INT(3) NOT NULL,
     plano_id INT NOT NULL,
     usuario_data_assinatura DATE,
-    FOREIGN KEY (plano_id) REFERENCES planos (plano_id),
+    FOREIGN KEY (plano_id) REFERENCES planos (plano_id)
 );
 
 CREATE TABLE albuns(
@@ -29,7 +29,7 @@ CREATE TABLE albuns(
     album_nome VARCHAR(100) NOT NULL,
     artista_id INT NOT NULL,
     album_ano_lancamento INT(4),
-    FOREIGN KEY (artista_id) REFERENCES artistas (artista_id),
+    FOREIGN KEY (artista_id) REFERENCES artistas (artista_id)
 );
 
 CREATE TABLE musicas(
@@ -37,7 +37,7 @@ CREATE TABLE musicas(
     musica_nome VARCHAR(100) NOT NULL,
     album_id INT NOT NULL,
     duracao INT,
-    FOREIGN KEY (album_id) REFERENCES albuns (album_id),
+    FOREIGN KEY (album_id) REFERENCES albuns (album_id)
 );
 
 CREATE TABLE usuario_artista(
@@ -45,7 +45,7 @@ CREATE TABLE usuario_artista(
     artista_id INT NOT NULL,
     CONSTRAINT PRIMARY KEY(usuario_id, artista_id),
     FOREIGN KEY (usuario_id) REFERENCES usuarios (usuario_id),
-    FOREIGN KEY (artista_id) REFERENCES artistas (artista_id),
+    FOREIGN KEY (artista_id) REFERENCES artistas (artista_id)
 );
 
 CREATE TABLE usuario_musica(
@@ -54,7 +54,7 @@ CREATE TABLE usuario_musica(
     data_reproducao DATETIME,
     CONSTRAINT PRIMARY KEY(usuario_id, musica_id),
     FOREIGN KEY (usuario_id) REFERENCES usuarios (usuario_id),
-    FOREIGN KEY (musica_id) REFERENCES musicas (musica_id),
+    FOREIGN KEY (musica_id) REFERENCES musicas (musica_id)
 );
 
 INSERT INTO planos(plano_nome, plano_valor)
