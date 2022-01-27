@@ -1,7 +1,7 @@
 SELECT
     a.usuario_nome AS usuarios,
     COUNT(c.usuario_id) AS qtde_musicas_ouvidas,
-    ROUND((SUM(b.duracao) / 60), 2)
+    ROUND((SUM(b.duracao) / 60), 2) AS total_minutos
 FROM
     SpotifyClone.usuarios AS a
         INNER JOIN
