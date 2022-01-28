@@ -1,8 +1,8 @@
 SELECT
-    MIN(a.plano_valor) AS faturamento_minimo,
-    MAX(a.plano_valor) AS faturamento_maximo,
-    ROUND(AVG(a.plano_valor), 2) AS faturamento_medio,
-    SUM(a.plano_valor) AS faturamento_total
+    FORMAT(MIN(a.plano_valor), 2) AS faturamento_minimo,
+    FORMAT(MAX(a.plano_valor), 2) AS faturamento_maximo,
+    FORMAT(AVG(a.plano_valor), 2) AS faturamento_medio,
+    FORMAT(SUM(a.plano_valor), 2) AS faturamento_total
 FROM
     SpotifyClone.planos AS a
         INNER JOIN
